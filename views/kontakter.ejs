@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <title><%= title %></title>
+
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+    <h1><%= title %></h1>
+<ul>
+    <li><a href="..">Hjem</a></li>
+</ul>
+    <section id="table" style="width:600px;">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th id="ID">ID</th>
+                    <th id="Navn">Navn</th>
+                    <th id="Epost">Epost</th>
+                    <th id="Tel">Telefon</th>
+                </tr>
+            </thead>
+
+            <% for(var i = 0; i < kontakter.length; i++) { %>
+            <tr class="tr">
+                    <td class="td"><%= kontakter[i].ID %></td>
+                <td class="td"><%= kontakter[i].Navn %></td>
+                <td class="td"><%= kontakter[i].Epost %></td>
+                <td class="td"><%= kontakter[i].Telefon %></td>
+            </tr>
+            <% } %>
+
+            <tfoot>
+                <tr>
+                        <th id="ID">ID</th>
+                        <th id="Navn">Navn</th>
+                        <th id="Epost">Epost</th>
+                        <th id="Tel">Telefon</th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </section>
+
+</body>
+</html>

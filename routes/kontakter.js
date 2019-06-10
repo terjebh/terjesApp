@@ -14,20 +14,20 @@ router.get('/', function (req, res, next) {
         host: 's1.itfakultetet.no',
         user: 'kurs',
         password: 'kurs123',
-        database: 'hr'
+        database: 'kontakter'
     });
 
     connection.connect();
 
-    var query = "select concat(first_name,' ',last_name) as Navn, extract(year from birth_date) as Fodt, gender as Kjonn from employees limit 300";
+    var query = "select person_id as ID, concat(fornavn,' ',etternavn) as Navn, epost as Epost, tel as Telefon from person";
 
     connection.query(query, function (err, result, fields) {
         if (err) {
             throw err;
         } else {
-            res.render('ansatte.ejs', {
-                title: 'Ansatte',
-                ansatte: result
+            res.render('kontakter.ejs', {
+                title: 'Kontakter',
+                kontakter: result
             });
             res.end();
         }
