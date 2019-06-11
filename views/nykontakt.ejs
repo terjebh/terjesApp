@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <title><%= title %></title>
+
+</head>
+
+<body>
+    
+    <h1><%= title %></h1>
+<ul>
+    <li><a href="..">Hjem</a></li>
+    <li><a href="kontakter">Kontakter</a></li>
+
+</ul>
+ 
+<section id="kontaktskjema" style="width:600px;">
+        
+<form name="nyKontakt" method="POST" action="nykontakt">
+
+<label for="fornavn" >Fornavn</label><input type="text" name="fornavn"><br>
+<label for="etternavn" >Etternavn</label><input type="text" name="etternavn"><br>
+<label for="epost" >Epost</label><input type="email" name="epost"><br>
+<label for="tel" >Telefon</label><input type="text" name="tel"><br>
+<input type="submit" value="Registrer kontakt">
+</form>   
+
+<p></p>
+<div id="message"><%= message %></div>
+    
+</section>
+
+</body>
+</html>
