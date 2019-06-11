@@ -27,19 +27,39 @@
  
 <section id="kontaktskjema" style="width:600px;">
         
-<form name="nyKontakt" method="POST" action="nykontakt">
+<form id="nyKontakt" name="nyKontakt" method="POST" action="nykontakt">
 
-<label for="fornavn" >Fornavn</label><input type="text" name="fornavn"><br>
-<label for="etternavn" >Etternavn</label><input type="text" name="etternavn"><br>
-<label for="epost" >Epost</label><input type="email" name="epost"><br>
-<label for="tel" >Telefon</label><input type="text" name="tel"><br>
-<input type="submit" value="Registrer kontakt">
+<label for="fornavn" >Fornavn</label><input id="fornavn" type="text" name="fornavn"><br>
+<label for="etternavn" >Etternavn</label><input id="etternavn" type="text" name="etternavn"><br>
+<label for="epost" >Epost</label><input id="epost" type="email" name="epost"><br>
+<label for="tel" >Telefon</label><input id="tel" type="text" name="tel"><br>
+<input type="button" value="Registrer kontakt" onclick="sjekk()">
 </form>   
 
 <p></p>
 <div id="message"><%= message %></div>
     
 </section>
+
+<script>
+function sjekk() {
+if (document.getElementById("fornavn").value=="") {
+    alert("Skriv inn fornavn");
+    document.getElementById("fornavn").focus();
+} else if (document.getElementById("etternavn").value=="") {
+    alert("Skriv inn etternavn");
+    document.getElementById("etternavn").focus();
+} else if (document.getElementById("epost").value=="") {
+    alert("Skriv inn eposten");
+    document.getElementById("epost").focus()
+} else if (document.getElementById("tel").value=="") {
+    alert("Skriv inn telefonnummeret");
+    document.getElementById("tel").focus()
+} else  {
+    document.getElementById("nyKontakt").submit();
+}
+}
+</script>
 
 </body>
 </html>
