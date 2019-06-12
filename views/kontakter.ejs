@@ -6,12 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+	 
     <title><%= title %></title>
 
 </head>
@@ -29,7 +34,7 @@
     <li><a href="nykontakt">Ny kontakt</a></li>
 </ul>
     <section id="table" style="width:600px;">
-        <table id="myTable">
+        <table id="myTable" class="stripe hover">
             <thead>
                 <tr>
                     <th id="ID">ID</th>
@@ -38,16 +43,16 @@
                     <th id="Tel">Telefon</th>
                 </tr>
             </thead>
-
+<tbody>
             <% for(var i = 0; i < kontakter.length; i++) { %>
-            <tr class="tr">
-                    <td class="td"><%= kontakter[i].ID %></td>
-                <td class="td"><%= kontakter[i].Navn %></td>
-                <td class="td"><%= kontakter[i].Epost %></td>
-                <td class="td"><%= kontakter[i].Telefon %></td>
+            <tr>
+                <td><%= kontakter[i].ID %></td>
+                <td><%= kontakter[i].Navn %></td>
+                <td><%= kontakter[i].Epost %></td>
+                <td><%= kontakter[i].Telefon %></td>
             </tr>
             <% } %>
-
+        </tbody>
             <tfoot>
                 <tr>
                         <th id="ID">ID</th>
@@ -59,6 +64,6 @@
         </table>
 
     </section>
-
+   
 </body>
 </html>
