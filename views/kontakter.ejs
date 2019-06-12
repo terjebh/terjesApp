@@ -6,17 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
-	 
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+
     <title><%= title %></title>
 
 </head>
@@ -24,15 +27,31 @@
 <body>
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                "language": {
+                    "lengthMenu": "Vis _MENU_ rader per side",
+                    "zeroRecords": "Ingenting funnet - sorry",
+                    "info": "Viser side _PAGE_ av _PAGES_",
+                    "infoEmpty": "No records available",
+                    "search": "Søk",
+                    "oPaginate": {
+                        "sFirst": "Første",
+                        "sPrevious": "Forrige",
+                        "sNext": "Neste",
+                        "sLast": "Siste"
+                    },
+                    "infoFiltered": "(filtrert fra _MAX_ rader totalt)"
+                }
+
+            });
         });
     </script>
 
     <h1><%= title %></h1>
-<ul>
-    <li><a href="..">Hjem</a></li>
-    <li><a href="nykontakt">Ny kontakt</a></li>
-</ul>
+    <ul>
+        <li><a href="..">Hjem</a></li>
+        <li><a href="nykontakt">Ny kontakt</a></li>
+    </ul>
     <section id="table" style="width:600px;">
         <table id="myTable" class="stripe hover">
             <thead>
@@ -43,27 +62,28 @@
                     <th id="Tel">Telefon</th>
                 </tr>
             </thead>
-<tbody>
-            <% for(var i = 0; i < kontakter.length; i++) { %>
-            <tr>
-                <td><%= kontakter[i].ID %></td>
-                <td><%= kontakter[i].Navn %></td>
-                <td><%= kontakter[i].Epost %></td>
-                <td><%= kontakter[i].Telefon %></td>
-            </tr>
-            <% } %>
-        </tbody>
+            <tbody>
+                <% for(var i = 0; i < kontakter.length; i++) { %>
+                <tr>
+                    <td><%= kontakter[i].ID %></td>
+                    <td><%= kontakter[i].Navn %></td>
+                    <td><%= kontakter[i].Epost %></td>
+                    <td><%= kontakter[i].Telefon %></td>
+                </tr>
+                <% } %>
+            </tbody>
             <tfoot>
                 <tr>
-                        <th id="ID">ID</th>
-                        <th id="Navn">Navn</th>
-                        <th id="Epost">Epost</th>
-                        <th id="Tel">Telefon</th>
+                    <th id="ID">ID</th>
+                    <th id="Navn">Navn</th>
+                    <th id="Epost">Epost</th>
+                    <th id="Tel">Telefon</th>
                 </tr>
             </tfoot>
         </table>
 
     </section>
-   
+
 </body>
+
 </html>
