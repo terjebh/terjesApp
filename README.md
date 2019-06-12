@@ -17,6 +17,11 @@ cd terjesApp
 
 npm start
 
+4. Bruk appen ved å gå til denne URLen med en nettleser:
+
+http://localhost:3000
+
+
 
 
 

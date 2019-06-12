@@ -58,6 +58,7 @@
                     <th id="Navn">Navn</th>
                     <th id="Epost">Epost</th>
                     <th id="Tel">Telefon</th>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -67,6 +68,7 @@
                     <td><%= kontakter[i].Navn %></td>
                     <td><%= kontakter[i].Epost %></td>
                     <td><%= kontakter[i].Telefon %></td>
+                    <td align="center"><img src="http://cdn.onlinewebfonts.com/svg/img_96165.svg" onclick="slett('<%= kontakter[i].Navn %>',<%= kontakter[i].ID %>)" style="width:20px;"></td>
                 </tr>
                 <% } %>
             </tbody>
@@ -76,11 +78,27 @@
                     <th id="Navn">Navn</th>
                     <th id="Epost">Epost</th>
                     <th id="Tel">Telefon</th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
 
     </section>
+
+<script>
+
+function slett(navn,person_id) {
+
+    var y = confirm("Vil du virkelig slette "+navn+"?");
+    if(y==true) {
+        document.location = "kontakter/delete/"+person_id+"";
+    }
+
+}
+
+</script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
