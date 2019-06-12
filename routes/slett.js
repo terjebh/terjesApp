@@ -26,6 +26,7 @@ connection.query(query, function (err, result, fields) {
         res.end();
     } else {
         res.send("Kontakten ble slettet");
+        console.log("Kontakten ble slettet");
         res.end();
    }
 });
