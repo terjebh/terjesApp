@@ -68,7 +68,8 @@
                     <td><%= kontakter[i].Navn %></td>
                     <td><%= kontakter[i].Epost %></td>
                     <td><%= kontakter[i].Telefon %></td>
-                    <td align="center"><img src="http://cdn.onlinewebfonts.com/svg/img_96165.svg" onclick="slett('<%= kontakter[i].Navn %>',<%= kontakter[i].ID %>)" style="width:20px;"></td>
+                    <td align="center"><img src="http://cdn.onlinewebfonts.com/svg/img_96165.svg"
+                            onclick="slett('<%= kontakter[i].Navn %>',<%= kontakter[i].ID %>)" style="width:20px;"></td>
                 </tr>
                 <% } %>
             </tbody>
@@ -85,18 +86,26 @@
 
     </section>
 
-<script>
+    <script>
 
-function slett(navn,person_id) {
+        function slett(navn, person_id) {
+        
+            var y = confirm("Vil du virkelig slette " + navn + "?");
+            if (y == true) {
+                fetch("slett/" + person_id + "");
+                reloadPage();    
+            }
 
-    var y = confirm("Vil du virkelig slette "+navn+"?");
-    if(y==true) {
-        document.location = "kontakter/delete/"+person_id+"";
-    }
+        }
 
-}
+        function reloadPage() {
+            
+                // document.location = "kontakter";
+        
 
-</script>
+        }
+
+    </script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
