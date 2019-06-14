@@ -24,12 +24,12 @@
                     <div class="form-group">
                         <label for="fornavn">Fornavn: </label>
                         <input id="fornavn" class="form-control form-control-sm" type="text" name="fornavn"
-                            placeholder="Kontaktens fornavn">
+                            required autofocus placeholder="Kontaktens fornavn">
                     </div>
                     <div class="form-group">
                         <label for="etternavn">Etternavn: </label>
                         <input id="etternavn" class="form-control form-control-sm" type="text" name="etternavn"
-                            placeholder="Kontaktens etternavn">
+                           required placeholder="Kontaktens etternavn">
                     </div>
                     <div class="form-group">
                         <label for="epost">Epost: </label>
@@ -43,7 +43,7 @@
                         <input id="tel" class="form-control form-control-sm" type="text" name="tel"
                             placeholder="Kontaktens telefonnummer">
                     </div>
-                    <input type="button" class="btn btn-primary" value="Registrer kontakt" onclick="sjekk()">
+                    <input type="submit" class="btn btn-primary" value="Registrer kontakt" >
                 </fieldset>
             </form>
 
@@ -69,19 +69,6 @@
         </section>
     </div>
 
-    <script>
-        function sjekk() {
-            if (document.getElementById("fornavn").value == "") {
-                alert("Skriv inn fornavn");
-                document.getElementById("fornavn").focus();
-            } else if (document.getElementById("etternavn").value == "") {
-                alert("Skriv inn etternavn");
-                document.getElementById("etternavn").focus();
-            } else {
-                document.getElementById("nyKontakt").submit();
-            }
-        }
-    </script>
 
 </body>
 
