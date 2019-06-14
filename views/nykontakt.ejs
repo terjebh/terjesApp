@@ -12,11 +12,14 @@
 
     <%- include('menu'); %>
 
-    <div class="container">
-        <h1><%= title %></h1>
-
-
-        <section id="kontaktskjema">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+          <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-9 col-lg-10 mx-auto">
+                    <h3 class="login-heading mb-4"><%= title %></h3>
 
             <form id="nyKontakt" name="nyKontakt" method="POST" action="nykontakt">
                 <fieldset>
@@ -66,8 +69,15 @@
                 <p class="mb-0">Nye kontakter lagres i databasen og er synlige med en gang</p>
             </div>
 
-        </section>
+        </div>
+        <div class="d-none d-md-flex col-md-4 col-lg-4 bg-image"></div>
+
     </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
 
 
 </body>
