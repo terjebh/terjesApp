@@ -10,7 +10,25 @@
 <body>
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable({
+            $('#personer').DataTable({
+                "language": {
+                    "lengthMenu": "Vis _MENU_ rader per side",
+                    "zeroRecords": "Ingenting funnet - sorry",
+                    "info": "Viser side _PAGE_ av _PAGES_",
+                    "infoEmpty": "Ingen rader funnet",
+                    "search": "Søk",
+                    "oPaginate": {
+                        "sFirst": "Første",
+                        "sPrevious": "Forrige",
+                        "sNext": "Neste",
+                        "sLast": "Siste"
+                    },
+                    "infoFiltered": "(filtrert fra _MAX_ rader totalt)"
+                }
+
+            });
+
+            $('#firma').DataTable({
                 "language": {
                     "lengthMenu": "Vis _MENU_ rader per side",
                     "zeroRecords": "Ingenting funnet - sorry",
@@ -33,8 +51,16 @@
     <%- include('menu') %>
 
     <h1><%= title %> <button onclick="document.location='nykontakt'" class="btn btn-primary">Ny kontakt</button></h1>
-    <section id="table" style="width:600px;">
-        <table id="myTable" class="stripe hover">
+    
+    <% kontakter.row %>
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+          <div class="col-md-8 col-lg-6">
+                <h3 class="mb-4">Personer</h3>
+
+        <table id="personer" class="stripe hover" >
             <thead>
                 <tr>
                     <th id="ID">ID</th>
@@ -67,8 +93,52 @@
             </tfoot>
         </table>
 
+        
 
-    </section>
+    </div>
+    <div class="col-md-8 col-lg-6">
+        <h3 class="mb-4">Firma</h3>
+
+
+        <table id="firma" class="stripe hover" >
+            <thead>
+                <tr>
+                    <th id="ID">ID</th>
+                    <th id="Navn">Firmanavn</th>
+                    <th id="Epost">Epost</th>
+                    <th id="Tel">Telefon</th>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i = 0; i < firma.length; i++) { %>
+                <tr>
+                    <td><%= firma[i].ID %></td>
+                    <td><%= firma[i].Firmanavn %></td>
+                    <td><%= firma[i].Epost %></td>
+                    <td><%= firma[i].Telefon %></td>
+                    <td align="center"><img src="http://cdn.onlinewebfonts.com/svg/img_96165.svg"
+                            onclick="slett('<%= firma[i].Firmanavn %>',<%= Firma[i].ID %>)" style="width:20px;"></td>
+                </tr>
+                <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th id="ID">ID</th>
+                    <th id="Navn">Navn</th>
+                    <th id="Epost">Epost</th>
+                    <th id="Tel">Telefon</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+
+       
+
+    </div>
+
+
+</div>
 
 
 
