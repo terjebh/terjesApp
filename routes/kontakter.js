@@ -3,8 +3,8 @@ var router = express.Router();
 
 // Her er koden som henter data og sender dem til ejs-malen
 
-let result_firma;
-let result_person;
+let result_firma = [];
+let result_person = [];
 
 var query_person = "select person_id as ID, concat(fornavn,' ',etternavn) as Navn, epost as Epost, tel as Telefon from person";
 var query_firma = "select firma_id as ID, firmanavn as Firmanavn, epost as Epost, tel as Telefon from firma";
@@ -41,11 +41,10 @@ connection.query(query_firma, function (err, result, fields) {
 connection.end();
 
 
-console.log("Person:" + result_person[0]);
-
 
 router.get('/', function (req, res, next) {
 
+    console.log("Person:" + result_person[0]);
 
 
     res.render('kontakter.ejs', {
