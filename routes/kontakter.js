@@ -3,58 +3,59 @@ var router = express.Router();
 
 // Her er koden som henter data og sender dem til ejs-malen
 
-    
+let result_firma;
+let result_person;
 
-router.get('/', async function (req, res, next) {
+var query_person = "select person_id as ID, concat(fornavn,' ',etternavn) as Navn, epost as Epost, tel as Telefon from person";
+var query_firma = "select firma_id as ID, firmanavn as Firmanavn, epost as Epost, tel as Telefon from firma";
 
-    var mysql = require('mysql');
-    var connection = mysql.createConnection({
-        host: 's1.itfakultetet.no',
-        user: 'kurs',
-        password: 'kurs123',
-        database: 'kontakter'
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 's1.itfakultetet.no',
+    user: 'kurs',
+    password: 'kurs123',
+    database: 'kontakter'
+});
+
+connection.connect();
+
+connection.query(query_person, function (err, result, fields) {
+    if (err) {
+        throw err;
+    } else {
+        console.log("Personer:" + result[0].Navn);
+        result_person = result;
+    }
+});
+
+
+connection.query(query_firma, function (err, result, fields) {
+    if (err) {
+        throw err;
+    } else {
+        this.result_firma = result;
+        console.log("Firma:" + result[0].Firmanavn);
+    }
+});
+
+connection.end();
+
+
+console.log("Person:" + result_person[0]);
+
+
+router.get('/', function (req, res, next) {
+
+
+
+    res.render('kontakter.ejs', {
+        title: 'Kontakter',
+        kontakter: result_person,
+        firma: result_firma
     });
-    
-    connection.connect();
-    
-    var query_person = "select person_id as ID, concat(fornavn,' ',etternavn) as Navn, epost as Epost, tel as Telefon from person";
-    var query_firma = "select firma_id as ID, firmanavn as Firmanavn, epost as Epost, tel as Telefon from firma";
-var result_firma;
-    await connection.query(query_person, function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-            
-            result_person = this.result;
-//            console.log("Personer:"+ result[0].Navn);
-            
-
-        }
-    });
-  
-
-     connection.query(query_firma, async function (err, result, fields) {
-        if (err) {
-            throw err;
-        } else {
-           console.log("Firma:"+result[0].Firmanavn);
-          result_firma = await result;
-        }
-    });
-   
-    await console.log("ResultFirma:"+  result_firma);
-      
-    
-    // res.render('kontakter.ejs', {
-    //     title: 'Kontakter',
-    //     kontakter: result_person,
-    //     firma: result_firma
-    // });
-    // res.end();
+    res.end();
 
 
-
-connection.end();    
 });
 
 module.exports = router;
