@@ -52,9 +52,6 @@
 
     <h1><%= title %> <button onclick="document.location='nykontakt'" class="btn btn-primary">Ny kontakt</button></h1>
     
-    <% kontakter.row %>
-
-
     <div class="container-fluid">
         <div class="row no-gutter">
           <div class="col-md-8 col-lg-6">
@@ -111,14 +108,14 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(var i = 0; i < firma.length; i++) { %>
+                <% for(let a = 0; a < firma.length; a++) { %>
                 <tr>
-                    <td><%= firma[i].ID %></td>
-                    <td><%= firma[i].Firmanavn %></td>
-                    <td><%= firma[i].Epost %></td>
-                    <td><%= firma[i].Telefon %></td>
+                    <td><%= firma[a].ID %></td>
+                    <td><%= firma[a].Firmanavn %></td>
+                    <td><%= firma[a].Epost %></td>
+                    <td><%= firma[a].Telefon %></td>
                     <td align="center"><img src="http://cdn.onlinewebfonts.com/svg/img_96165.svg"
-                            onclick="slett('<%= firma[i].Firmanavn %>',<%= Firma[i].ID %>)" style="width:20px;"></td>
+                            onclick="slett('<%= firma[a].Firmanavn %>',<%= firma[a].ID %>)" style="width:20px;"></td>
                 </tr>
                 <% } %>
             </tbody>

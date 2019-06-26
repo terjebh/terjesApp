@@ -23,7 +23,7 @@ connection.query(query_person, function (err, result, fields) {
     if (err) {
         throw err;
     } else {
-        console.log("Personer:" + result[0].Navn);
+        // console.log("Personer:" + result[0].Navn);
         result_person = result;
     }
 });
@@ -33,8 +33,8 @@ connection.query(query_firma, function (err, result, fields) {
     if (err) {
         throw err;
     } else {
-        this.result_firma = result;
-        console.log("Firma:" + result[0].Firmanavn);
+        result_firma = result;
+        // console.log("Firma:" + result[0].Firmanavn);
     }
 });
 
@@ -44,7 +44,8 @@ connection.end();
 
 router.get('/', function (req, res, next) {
 
-    console.log("Person:" + result_person[0]);
+    // // console.log("Person:" + result_person[0]);
+    // console.log("Firma:" + result_firma[0]);
 
 
     res.render('kontakter.ejs', {
