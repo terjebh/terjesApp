@@ -6,16 +6,7 @@ var router = express.Router();
 let result_firma = [];
 let result_person = [];
 
-var query_person = "select person_id as ID, concat(fornavn,' ',etternavn) as Navn, epost as Epost, tel as Telefon from person";
-var query_firma = "select firma_id as ID, firmanavn as Firmanavn, epost as Epost, tel as Telefon from firma";
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 's1.itfakultetet.no',
-    user: 'kurs',
-    password: 'kurs123',
-    database: 'kontakter'
-});
 
 connection.connect();
 
@@ -38,11 +29,11 @@ connection.query(query_firma, function (err, result, fields) {
     }
 });
 
-connection.end();
+// connection.end();
 
 
 
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
 
     // // console.log("Person:" + result_person[0]);
     // console.log("Firma:" + result_firma[0]);
@@ -50,8 +41,8 @@ router.get('/', function (req, res, next) {
 
     res.render('kontakter.ejs', {
         title: 'Kontakter',
-        kontakter: result_person,
-        firma: result_firma
+        kontakter: await result_person,
+        firma: await result_firma
     });
     res.end();
 
