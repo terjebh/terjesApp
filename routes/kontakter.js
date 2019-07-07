@@ -1,36 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const queries = require('../model/queries');
+const router = express.Router();
 
 // Her er koden som henter data og sender dem til ejs-malen
 
-let result_firma = [];
-let result_person = [];
-
-
-
-connection.connect();
-
-connection.query(query_person, function (err, result, fields) {
-    if (err) {
-        throw err;
-    } else {
-        // console.log("Personer:" + result[0].Navn);
-        result_person = result;
-    }
-});
-
-
-connection.query(query_firma, function (err, result, fields) {
-    if (err) {
-        throw err;
-    } else {
-        result_firma = result;
-        // console.log("Firma:" + result[0].Firmanavn);
-    }
-});
-
-// connection.end();
-
+let result_company = queries.result_company;
+let result_person = queries.result_person;;
 
 
 router.get('/', async function (req, res, next) {
@@ -41,8 +16,8 @@ router.get('/', async function (req, res, next) {
 
     res.render('kontakter.ejs', {
         title: 'Kontakter',
-        kontakter: await result_person,
-        firma: await result_firma
+        kontakter: result_person,
+        firma: result_company
     });
     res.end();
 

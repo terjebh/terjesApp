@@ -7,4 +7,4 @@ const connection = mysql.createConnection({
     database: 'kontakter'
 });
 
-module.exports.connection;
+module.exports.connection = connection;
