@@ -1,5 +1,5 @@
 const db = require('./db');
-
+var result_person ="";
 const connection = db.connection;
 
 // SQL
@@ -12,8 +12,8 @@ connection.query(query_person, function (err, result, fields) {
         throw err;
     } else {
         // console.log("Personer:" + result[0].Navn);
-        module.exports.result_person = result;
+        result_person = result;
     }
 });
 
-
+module.exports.result_person = result_person;
