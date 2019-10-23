@@ -1,7 +1,8 @@
 const express = require('express');
 const person = require('../model/result_person');
 const company = require('../model/result_company');
-const router = express.Router();
+const router = express.Router();  
+
 
 // Her er koden som henter data og sender dem til ejs-malen
 
