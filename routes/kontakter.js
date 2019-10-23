@@ -18,8 +18,8 @@ router.get('/', async function (req, res, next) {
 
     res.render('kontakter.ejs', {
         title: 'Kontakter',
-        kontakter: person.result_person,
-        firma: company.result_company
+        kontakter: await person.result_person,
+        firma: await company.result_company
     });
     res.end();
 

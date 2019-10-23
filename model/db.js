@@ -7,5 +7,5 @@ const connection = mysql.createConnection({
     database: 'kontakter'
 });
 connection.connect();
-
+console.log("connected...");
 module.exports.connection = connection;
