@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: 's1.itfakultetet.no',
-    user: 'kurs',
+    host: 'itfakultetet.no',
+    user: 'kurs4',
     password: 'kurs123',
-    database: 'kontakter'
+    database: 'kurs4'
 });
 connection.connect();
 console.log("connected...");
